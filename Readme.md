@@ -17,7 +17,7 @@ A simple backend application (`hashicorp/http-echo`) is used to test safe and ma
 * Safe requests reach the backend
 * Malicious requests are blocked with HTTP 403
 * Easy to run with Docker Compose
-* No changes were made to original config files
+
 
 ## 📁 Project Structure
 
@@ -62,7 +62,7 @@ You should see:
 * `owasp/modsecurity-crs:nginx`
 * `hashicorp/http-echo`
 
-**📸 Screenshot placeholder #1 – Running containers**
+
 
 ### 3. Test WAF is responding
 
