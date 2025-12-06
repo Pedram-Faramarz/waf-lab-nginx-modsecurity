@@ -1,0 +1,27 @@
+services:
+  app:
+    image: hashicorp/http-echo:0.2.3
+    command: ["-text=hello from app"]
+    ports:
+      - "5678:5678"
+    networks:
+      - waf-net
+
+  waf:
+    image: owasp/modsecurity-crs:nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./waf/conf.d/proxy.conf:/etc/nginx/conf.d/proxy.conf:ro
+      - ./waf/modsecurity.conf:/etc/modsecurity/modsecurity.conf:ro
+      - ./waf/modsecurity-crs.conf:/etc/modsecurity/crs-setup.conf:ro
+
+    depends_on:
+      - app
+    networks:
+      - waf-net
+
+networks:
+  waf-net:
+
+
